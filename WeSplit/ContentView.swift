@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    let tipPercentages = [10, 15, 20, 25, 0]
+    private let tipPercentages = [10, 15, 20, 25, 0]
+    private let currencyFormat = FloatingPointFormatStyle<Double>.Currency(code: Locale.current.currencyCode ?? "USD")
     @State private var checkAmount = 0.0
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 20
@@ -53,13 +54,13 @@ struct ContentView: View {
                     }
                     
                     Section {
-                        Text(grandTotal, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        Text(grandTotal, format: currencyFormat)
                     } header: {
                         Text("Grand total")
                     }
                     
                     Section {
-                        Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        Text(totalPerPerson, format: currencyFormat)
                     } header: {
                         Text("Amount per person")
                     }
@@ -69,7 +70,6 @@ struct ContentView: View {
                     ToolbarItemGroup(placement: .keyboard) {
                         Button("Done") {
                             Spacer()
-                            
                             amountIsFocused = false
                         }
                     }
