@@ -55,6 +55,7 @@ struct ContentView: View {
                     
                     Section {
                         Text(grandTotal, format: currencyFormat)
+                            .foregroundColor(tipPercentage == 0 ? .red : .primary)
                     } header: {
                         Text("Grand total")
                     }
@@ -69,7 +70,6 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         Button("Done") {
-                            Spacer()
                             amountIsFocused = false
                         }
                     }
